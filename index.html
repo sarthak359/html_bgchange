@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+* {box-sizing: border-box;}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    overflow: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px 20px;
+    padding-top: 25px;
+    background-color: transparent; /* Semi-transparent background */
+    z-index: 10;
+}
+
+.navbar img {
+    padding-left: 80px;
+    height: 18px;
+    width: auto;
+}
+.spotify{
+    padding-left: 950px;
+}
+.spotify img{
+    height: 100px;
+}
+.slideshow-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Fullscreen images */
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Caption container */
+.overlay-content {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.overlay-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: txtzoomInOut 10s ease-in-out infinite;
+}
+
+.overlay-content button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.overlay-content button:hover {
+    background-color: #45a049;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+    .overlay-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .overlay-content button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Zoom in and zoom out animation */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);   /* Zoom out */
+    }
+    100% {
+        transform: scale(1);   /* Back to normal */
+    }
+}
+@keyframes txtzoomInOut {
+    0% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(1);   /* Zoom out */
+    }
+    100% {
+        transform: scale(1.3);   /* Back to normal */
+    }
+}
+
+.mySlides img {
+    animation: zoomInOut 10s ease-in-out infinite;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<div class="navbar">
+    <a href="index.html" class="nav-brand">
+        <img src="img/logo.png" alt="Logo">
+    </a>
+    <a class="spotify" href="index.html" >
+        <img src="https://download.logo.wine/logo/Spotify/Spotify-Logo.wine.png" alt="">
+    </a>
+</div>
+
+<!-- Slideshow Container -->
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="img/bg-1.jpg">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="img/bg-2.jpg">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="img/bg-3.jpg">
+    </div>
+
+    <!-- Overlay Content with Heading and Button -->
+    <div class="overlay-content">
+        <h1>Your Amazing Headline Here</h1>
+        <button>Click Me</button>
+    </div>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 10000); // Change image every 10 seconds
+}
+</script>
+
+</body>
+</html>
